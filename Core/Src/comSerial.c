@@ -236,7 +236,7 @@ void DecodeCommand(_sSerial *data)
 
               	buffer[4]=0x02;
                   break;
-        case 0xEF://Configuración de los parámetros de conección vía USB
+        case 0xEF://Configuración de los parámetros de conexión vía USB
 			buffer[inicioTx++]=0xEF;
 			buffer[inicioTx++]=0x0D;
 			espConfig.cipMode=data->rxdata[2];
@@ -316,11 +316,6 @@ void DecodeCommand(_sSerial *data)
 void comSerialRecibe(){
 	if(usbCom.rxRead!=usbCom.rxWrite){
 		decodeHeader(&usbCom);
-		/*
-		while(usbCom.rxRead!=usbCom.rxWrite){
-			usbCom.outBuff[usbCom.txWrite++]=usbCom.inBuff[usbCom.rxRead++];
-		}
-		enviar_byte(&usbCom);*/
 	}
 	if(usbCom.txRead!=usbCom.txWrite)
 		enviar_byte(&usbCom);
