@@ -291,9 +291,9 @@ static void actualizaMef(void){
           nbytes = strlen(mensaje);
           wifiSend(mensaje, nbytes);
         }				 
-        else{
-          sprintf(mensaje, "\\192.168.1.200\\mensaje.php?valor=\"stm32 ALIVE TCP N=%d\"", cuenta);
-          nbytes = strlen(mensaje);
+        else{ //Esto no lo probé todavía.
+          sprintf(mensaje, "GET /mensaje.php?valor=stm32_ALIVE_TCP_N=%d HTTP/1.0\r\n\r\n", cuenta); 
+				  nbytes = strlen(mensaje);
           wifiSend(mensaje, nbytes);
         }
       }
